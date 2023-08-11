@@ -4,9 +4,9 @@
 
 /**
 * main - Entry point
-* lets print the last digits
+*To check for the last digits
 *
-*Return: Always 0 
+*Return: Always 0 (Success)
 */
 int main(void)
 {
