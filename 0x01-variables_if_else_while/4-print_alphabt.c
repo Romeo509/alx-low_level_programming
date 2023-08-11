@@ -9,14 +9,14 @@
 */
 int main(void)
 {
-char alpha;
-for (alpha = 'a' ; alpha <= 'z' ; alpha++)
+char character;
+for (character = 'a' ; character <= 'z' ; character++)
 {
-if (alpha != 'q' && alpha != 'e')
+if (character != 'q' && character != 'e')
 {
-putcher{alpha};
+putchar(character);
 }
 }
-putcher('\n');
+putchar('\n');
 return (0);
 }
