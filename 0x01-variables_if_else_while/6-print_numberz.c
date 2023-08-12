@@ -12,8 +12,8 @@ int main(void)
 int integer;
 for (integer = '0' ; integer <= '9' ; integer++)
 {
-putcher(integer);
+putchar(integer);
 }
-putcher('\n');
+putchar('\n');
 return (0);
 }
