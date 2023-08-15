@@ -13,7 +13,8 @@ for (i = n; i < 98; i++)
 {
 printf("%i, ", i);
 }
-} else
+}
+else
 {
 for (i = n; i > 98; i--)
 {
