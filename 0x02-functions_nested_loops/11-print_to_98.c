@@ -9,14 +9,14 @@ void print_to_98(int n)
 {
 if (n < 98)
 {
-for (int i = n; i < 98; i++)
-printf("%d, ", i);
+for (n = n; n < 98; n++)
+printf("%d, ", n);
 printf("%d\n", 98);
 }
 else
 {
-for (int i = n; i > 98; i--)
-printf("%d, ", i);
+for (n = n; n > 98; n--)
+printf("%d, ", n);
 printf("%d\n", 98);
 }
 }
