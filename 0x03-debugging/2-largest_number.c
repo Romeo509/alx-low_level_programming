@@ -27,3 +27,6 @@ int largest_number(int a, int b, int c)
 
     return (largest);
 }
+/*
+*End of the code
+*/
