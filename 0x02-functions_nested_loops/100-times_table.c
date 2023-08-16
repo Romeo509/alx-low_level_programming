@@ -86,7 +86,7 @@ void putnchar(int num)
 }
 
 /**
- * print_times_table - print multiplication table for factor of n
+ * print_times_table - print multiplition table n
  * @n: integer n
  */
 void print_times_table(int n)
