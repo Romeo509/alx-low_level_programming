@@ -4,7 +4,6 @@
 * print_number - prints all integers
 * @n: integer to print
 */
-
 void print_number(int n)
 {
 unsigned int n1;
@@ -14,7 +13,7 @@ n1 = -n;
 _putchar('-');
 } else
 {
-	n1 = n;
+n1 = n;
 }
 if (n1 / 10)
 {
