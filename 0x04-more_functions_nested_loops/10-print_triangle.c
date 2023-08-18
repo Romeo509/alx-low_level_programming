@@ -1,6 +1,6 @@
 #include "main.h"
 /**
-*print_square - forming triangles
+*print_triangle - forming triangles
 *@size: To print the size
 *Return: Always 0
 */
