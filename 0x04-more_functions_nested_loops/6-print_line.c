@@ -4,16 +4,22 @@
 * print_line - print line of length
 * @n: length of line
 */
-void print_line(int n)
 {
-int i = 0;
+int i;
+
 if (n > 0)
 {
-while (i < n)
+for (i = 0; i < n; i++)
 {
-_putchar('_');
-i++;
+_putchar (95);
 }
-_putchar('\n');
+
+_putchar ('\n');
 }
+
+else
+{
+_putchar ('\n');
+}
+
 }
