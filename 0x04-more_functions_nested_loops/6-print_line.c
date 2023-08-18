@@ -4,6 +4,7 @@
 * print_line - print line of length
 * @n: length of line
 */
+void print_line(int n)
 {
 int i;
 
@@ -23,3 +24,4 @@ _putchar ('\n');
 }
 
 }
+
