@@ -1,8 +1,9 @@
 #include "main.h"
+
 /**
-* print_number - that prints an integer
-*@n: print int
-* Return: Always 0.
+*print_number - that prints the integer
+*@n: print intiger
+*Return: Always 0
 */
 void print_number(int n)
 {
