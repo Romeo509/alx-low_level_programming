@@ -16,8 +16,8 @@ s++;
 while (length > 0)
 {
 s--;
-putchar(*s);
+_putchar(*s);
 length--;
 }
-putchar('\n');
+_putchar('\n');
 }
