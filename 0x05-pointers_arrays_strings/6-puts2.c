@@ -12,8 +12,8 @@ while (str[i] != '\0')
 {
 _putchar(str[i]);
 i++;
-if (str[i] != '\0') // Check if the next character is not the null-terminator
-i++;            // Increment i again to skip the next character
+if (str[i] != '\0')
+i++;r
 }
 _putchar('\n');
 }
