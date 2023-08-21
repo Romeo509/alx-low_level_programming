@@ -6,24 +6,16 @@
 */
 void puts_half(char *str)
 {
-int length = 0;
-int start_index;
-while (str[length] != '\0')
+int i, last;
+i = 0;
+while (str[i] != '\0')
 {
-length++;
+i++;
 }
-if (length % 2 == 0)
+last = (i + 1) / 2;
+for (i = last; str[i]; i++)
 {
-start_index = length / 2;
+_putchar (str[i]);
 }
-else
-{
-start_index = (length - 1) / 2;
-}
-while (str[start_index] != '\0')
-{
-_putchar(str[start_index]);
-start_index++;
-}
-_putchar('\n');
+_putchar ('\n');
 }
