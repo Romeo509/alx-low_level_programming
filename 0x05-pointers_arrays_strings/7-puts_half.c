@@ -4,7 +4,6 @@
 *@str: The input string.
 *return: void
 */
-
 void puts_half(char *str)
 {
 int length = 0;
