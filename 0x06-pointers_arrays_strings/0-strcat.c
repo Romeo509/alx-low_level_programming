@@ -1,22 +1,26 @@
 #include "main.h"
+#include "stdio.h"
 /**
 *_strcat - concatinate two strings
 *@dest: The poiter
 *@src: The pointer
 *Return: dest
 */
-char *_strcat(char *dest, char *src) 
+char *_strcat(char *dest, char *src)
 {
-char *ptr = dest;
-while (*ptr != '\0')
+int i, j;
+i = 0;
+while (dest[i] != '\0')
 {
-ptr++;
+i++;
 }
-while (*src != '\0')
-*ptr = *src;
-ptr++;
-src++;
+j = 0;
+while (src[j] != '\0')
+{
+dest[i] = src[j];
+j++;
+i++;
 }
-*ptr = '\0';
+dest[i] = '\0';
 return (dest);
 }
