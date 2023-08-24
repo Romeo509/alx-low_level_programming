@@ -1,5 +1,4 @@
 #include "main.h"
-#include <stdio.h>
 /**
 * infinite_add - adds the numbers
 * @n1: num1
@@ -12,42 +11,37 @@
 
 char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
-int carry = 0;
-int i = 0, j = 0, k = 0;
-while (n1[i] != '\0')
+int len1 = 0, len2 = 0, carry = 0, sum;
+char *tmp_r = r;
+while (n1[len1] != '\0')
+len1++;
+while (n2[len2] != '\0')
+len2++;
+if (len1 > size_r - 1 || len2 > size_r - 1)
+return 0;
+n1 += len1 - 1;
+n2 += len2 - 1;
+r += size_r - 1;
+*r = '\0';
+len1--;
+len2--;
+while (len1 >= 0 || len2 >= 0 || carry)
 {
-i++;
+sum = carry;
+if (len1 >= 0)
+{
+sum += *n1 - '0';
+n1--;
 }
-while (n2[j] != '\0')
+if (len2 >= 0)
 {
-j++;
+sum += *n2 - '0';
+n2--;
 }
-if (i >= size_r - 1 || j >= size_r - 1)
-{
-return (0);
-}
-i--;
-j--;
-k = size_r - 2;
-while (i >= 0 || j >= 0 || carry)
-{
-int digit1 = i >= 0 ? n1[i] - '0' : 0;
-int digit2 = j >= 0 ? n2[j] - '0' : 0;
-int sum = digit1 + digit2 + carry;
 carry = sum / 10;
-r[k] = (sum % 10) + '0';
-i--;
-j--;
-k--;
+*--r = sum % 10 + '0';
+if ((carry && r == tmp_r) || r < tmp_r)
+return 0;
 }
-if (carry)
-{
-r[k] = carry + '0';
+return r;
 }
-else
-{
-k++;
-}
-return (&r[k]);
-}
-
