@@ -1,27 +1,30 @@
 #include "main.h"
 
 /**
-* leet - Encodes a string into 1337.
-* @str: The string to encode.
+* cap_string - Capitalizes all words of a string.
+* @s: The input string.
 *
-* Return: A pointer to the resulting encoded string.
+* Return: A pointer to the modified string.
 */
-char *leet(char *str)
+char *cap_string(char *s)
 {
-char *ptr = str;
-while (*str != '\0')
+int count = 0;
+int separators[] = {32, 9, 10, 44, 59, 46, 33, 63, 34, 40, 41, 123, 125};
+if (*(s + count) >= 'a' && *(s + count) <= 'z')
+*(s + count) = *(s + count) - ('a' - 'A');
+count++;
+while (*(s + count) != '\0')
 {
-if (*str == 'a' || *str == 'A')
-*str = '4';
-else if (*str == 'e' || *str == 'E')
-*str = '3';
-else if (*str == 'o' || *str == 'O')
-*str = '0';
-else if (*str == 't' || *str == 'T')
-*str = '7';
-else if (*str == 'l' || *str == 'L')
-*str = '1';
-str++;
+for (int i = 0; i < 13; i++)
+{
+if (*(s + count) == separators[i])
+{
+if (*(s + (count + 1)) >= 'a' && *(s + (count + 1)) <= 'z')
+*(s + (count + 1)) = *(s + (count + 1)) - ('a' - 'A');
+break;
 }
-return (ptr);
+}
+count++;
+}
+return (s);
 }
