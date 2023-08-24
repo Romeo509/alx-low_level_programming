@@ -1,5 +1,4 @@
 #include "main.h"
-#include <stdbool.h>
 
 /**
 * is_separator - Checks if a character is a word separator.
@@ -13,36 +12,30 @@ char separators[] = " \t\n,;.!?\"(){}";
 for (int i = 0; separators[i] != '\0'; i++)
 {
 if (c == separators[i])
-return (true);
+{
+return true;
 }
-return (false);
 }
-
-/**
-* cap_string - Capitalizes all words in a string.
-* @str: The string to capitalize.
-*
-* Return: A pointer to the resulting string.
-*/
+return false;
+}
 char *cap_string(char *str)
 {
 bool new_word = true;
-char *ptr = str;
-while (*str != '\0')
+for (int i = 0; str[i] != '\0'; i++)
 {
-if (is_separator(*str))
+if (is_separator(str[i]))
 {
 new_word = true;
 }
-else if (new_word)
+else if (new_word && isalpha(str[i]))
 {
-if (*str >= 'a' && *str <= 'z')
-{
-*str = *str - ('a' - 'A');
-}
+str[i] = toupper(str[i]);
 new_word = false;
 }
-str++;
+else
+{
+str[i] = tolower(str[i]);
 }
-return (ptr);
+}
+return str;
 }
