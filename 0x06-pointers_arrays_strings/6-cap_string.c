@@ -13,10 +13,10 @@ for (int i = 0; separators[i] != '\0'; i++)
 {
 if (c == separators[i])
 {
-return true;
+return (true);
 }
 }
-return false;
+return (false);
 }
 char *cap_string(char *str)
 {
@@ -37,5 +37,5 @@ else
 str[i] = tolower(str[i]);
 }
 }
-return str;
+return (str);
 }
