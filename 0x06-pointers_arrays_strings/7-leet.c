@@ -1,30 +1,26 @@
 #include "main.h"
 
 /**
-* cap_string - Capitalizes all words of a string.
-* @s: The input string.
-*
-* Return: A pointer to the modified string.
+* leet - encoding into 1337
+* @a: for checking characters
+* Return: a;
 */
-char *cap_string(char *s)
+char *leet(char *a)
 {
-int count = 0;
-int separators[] = {32, 9, 10, 44, 59, 46, 33, 63, 34, 40, 41, 123, 125};
-if (*(s + count) >= 'a' && *(s + count) <= 'z')
-*(s + count) = *(s + count) - ('a' - 'A');
-count++;
-while (*(s + count) != '\0')
+int count = 0, i = 0;
+char *alpha = "aeotlAEOTL";
+char *numbers = "4307143071";
+while (a[count] != '\0')
 {
-for (int i = 0; i < 13; i++)
+i = 0;
+while (alpha[i] != '\0')
 {
-if (*(s + count) == separators[i])
-{
-if (*(s + (count + 1)) >= 'a' && *(s + (count + 1)) <= 'z')
-*(s + (count + 1)) = *(s + (count + 1)) - ('a' - 'A');
-break;
-}
+if (a[count] == alpha[i])
+a[count] = numbers[i];
+i++;
 }
 count++;
 }
-return (s);
+return (a);
 }
+
