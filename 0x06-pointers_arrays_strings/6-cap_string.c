@@ -27,8 +27,8 @@ break;
 }
 }
 if (separator_found == 0 && *(s + count) >= 'A' && *(s + count) <= 'Z')
-*(s + count) = *(s + count) + ('a' - 'A');
+*(s + count) = *(s + count) +('a' - 'A');
 count++;
 }
-return s;
+return (s);
 }
