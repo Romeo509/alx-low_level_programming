@@ -11,37 +11,36 @@
 */
 char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
-int l1, l2, carry = 0;
-int a, b, c, digit_sum, result_digit;
-for (l1 = 0; n1[l1]; l1++)
+int a, b, c, d, e, f;
+for (a = 0; n1[a]; a++)
 ;
-for (l2 = 0; n2[l2]; l2++)
+for (b = 0; n2[b]; b++)
 ;
-if (l1 > size_r || l2 > size_r)
+if (a > size_r || b > size_r)
 return (0);
-carry = 0;
-for (a = l1 - 1, b = l2 - 1, c = 0; c < size_r - 1; a--, b--, c++)
+e = 0;
+for (a -= 1, b -= 1, c = 0; c < size_r - 1; a--, b--, c++)
 {
-result_digit = carry;
+f = e;
 if (a >= 0)
-result_digit += n1[a] - '0';
+f += n1[a] - '0';
 if (b >= 0)
-result_digit += n2[b] - '0';
-if (a < 0 && b < 0 && result_digit == 0)
+f += n2[b] - '0';
+if (a < 0 && b < 0 && f == 0)
 {
 break;
 }
-carry = result_digit / 10;
-r[c] = result_digit % 10 + '0';
+e = f / 10;
+r[c] = f % 10 + '0';
 }
 r[c] = '\0';
-if (a >= 0 || b >= 0 || carry)
+if (a >= 0 || b >= 0 || e)
 return (0);
-for (c -= 1, a = 0; a < c; c--, a++)
+for (c -= 1, d = 0; d < c; c--, d++)
 {
-result_digit = r[c];
-r[c] = r[a];
-r[a] = result_digit;
+e = r[c];
+r[c] = r[d];
+r[d] = e;
 }
 return (r);
 }
