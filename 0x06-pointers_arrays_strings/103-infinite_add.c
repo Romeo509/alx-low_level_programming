@@ -1,47 +1,51 @@
 #include "main.h"
 
 /**
-* infinite_add - Adds two numbers.
-* @n1: The first number string.
-* @n2: The second number string.
-* @r: The buffer to store the result.
-* @size_r: The size of the result buffer.
+* infinite_add - adding two numbers
+* @n1: num1
+* @n2: num2
+* @r: result
+* @size_r: buffer size
 *
-* Return: A pointer to the result or 0 if the result cannot fit in r.
+* Return: 0
 */
 char *infinite_add(char *n1, char *n2, char *r, int size_r)
+
 {
-int len1 = 0, len2 = 0, carry = 0;
-int i, sum, digit_sum;
-while (n1[len1] != '\0')
-len1++;
-while (n2[len2] != '\0')
-len2++;
-if (len1 >= size_r || len2 >= size_r)
+int a, b, c, d, e, n;
+for (a = 0; n1[a]; a++)
+;
+for (b = 0; n2[b]; b++)
+;
+if (a > size_r || b > size_r)
 return (0);
-r[size_r - 1] = '\0';
-while (len1 > 0 || len2 > 0)
+e = 0;
+for (a -= 1, b -= 1, c = 0; c < size_r - 1; a--, b--, c++)
+
 {
-len1--;
-len2--;
-if (len1 >= 0)
-sum = n1[len1] - '0';
-else
-sum = 0;
-if (len2 >= 0)
-sum += n2[len2] - '0';
-sum += carry;
-digit_sum = sum % 10;
-carry = sum / 10;
-r[size_r - 2] = digit_sum + '0';
-size_r--;
+n = e;
+if (a >= 0)
+n += n1[a] - '0';
+if (b >= 0)
+n += n2[b] - '0';
+if (a < 0 && b < 0 && n == 0)
+
+{
+break;
 }
-if (carry > 0)
-{
-if (size_r == 1)
+e = n / 10;
+r[b] = n % 10 + '0';
+}
+r[b] = '\0';
+if (a >= 0 || b >= 0 || e)
 return (0);
-r[size_r - 2] = carry + '0';
+for (c -= 1, d = 0; d < c; c--, d++)
+
+{
+e = r[c];
+r[c] = r[d];
+r[d] = e;
 }
-return (r + size_r - 1);
+return (r);
 }
 
