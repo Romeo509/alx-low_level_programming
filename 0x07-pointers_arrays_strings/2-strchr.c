@@ -2,12 +2,12 @@
 
 /**
 *_strchr - Locates a character in a string
-*@s: Strind to search in
-*@c: Charcter to locate
+*@s: String to search in
+*@c: Character to locate
 *
-*Return: A pointer to the first occurance of c in s, or NULL if not found
+*Return: A pointer to the first occurrence of c in s, or NULL if not found
 */
-char *_strchr(char *s, char c);
+char *_strchr(char *s, char c)
 {
 while (*s != '\0')
 {
@@ -22,4 +22,3 @@ if (c == '\0')
 return (s);
 }
 return (NULL);
-}
