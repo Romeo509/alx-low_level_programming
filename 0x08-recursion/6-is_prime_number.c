@@ -1,9 +1,11 @@
 #include "main.h"
 
+int check_prime(int n, int divisor);
+
 /**
-* is_prime_number - Checks if the input integer is a prime number.
-* @n: The number to be checked.
-* Return: 1 if the number is prime, 0 otherwise.
+*is_prime_number - Checks if the input integer is a prime number.
+*@n: The number to be checked.
+*Return: 1 if the number is prime, 0 otherwise.
 */
 int is_prime_number(int n)
 {
