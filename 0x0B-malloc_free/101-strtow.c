@@ -10,14 +10,15 @@
 */
 char **strtow(char *str)
 {
+int word_count = 0;
+char **words = NULL;
+char *token;
+int i;
 if (!str || !*str)
 {
 return (NULL);
 }
-int word_count = 0;
-char **words = NULL;
-char *token = strtok(str, " ");
-int i = 0;
+token = strtok(str, " ");
 while (token)
 {
 word_count++;
@@ -33,12 +34,14 @@ if (!words)
 return (NULL);
 }
 token = strtok(str, " ");
+i = 0;
 while (token)
 {
 words[i] = strdup(token);
 if (!words[i])
 {
-for (int j = 0; j < i; j++)
+int j;
+for (j = 0; j < i; j++)
 {
 free(words[j]);
 }
@@ -51,4 +54,3 @@ token = strtok(NULL, " ");
 words[word_count] = NULL;
 return (words);
 }
-
