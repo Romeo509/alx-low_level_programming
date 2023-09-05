@@ -16,7 +16,7 @@ char *concatenated;
 int i, j, k = 0;
 if (ac == 0 || av == NULL)
 {
-return {0};
+return (0);
 }
 for (i = 0; i < ac; i++)
 {
@@ -29,7 +29,7 @@ total_length++;
 concatenated = (char *)malloc((total_length + 1) * sizeof(char));
 if (concatenated == NULL)
 {
-return {0};
+return (0);
 }
 for (i = 0; i < ac; i++)
 {
@@ -40,6 +40,6 @@ concatenated[k++] = av[i][j];
 concatenated[k++] = '\n';
 }
 concatenated[k] = '\0';
-return {concatenated};
+return (concatenated);
 }
 
