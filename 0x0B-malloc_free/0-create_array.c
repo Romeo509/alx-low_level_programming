@@ -2,7 +2,7 @@
 #include "main.h"
 
 /**
-*create_array - Creates an array of characters.
+*create_array - Creates an array of characters .
 *@size: The number of elements in the array.
 *@c: The character to initialize the array elements with.
 *
@@ -20,9 +20,12 @@ if (array == 0)
 {
 return (0);
 }
-for (unsigned int i = 0; i < size; i++)
+unsigned int i = 0;
+while (i < size)
 {
 array[i] = c;
+i++;
 }
 return (array);
 }
+
