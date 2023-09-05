@@ -17,6 +17,7 @@ return (NULL);
 int word_count = 0;
 char **words = NULL;
 char *token = strtok(str, " ");
+int i = 0;
 while (token)
 {
 word_count++;
@@ -32,7 +33,6 @@ if (!words)
 return (NULL);
 }
 token = strtok(str, " ");
-int i = 0;
 while (token)
 {
 words[i] = strdup(token);
@@ -51,3 +51,4 @@ token = strtok(NULL, " ");
 words[word_count] = NULL;
 return (words);
 }
+
