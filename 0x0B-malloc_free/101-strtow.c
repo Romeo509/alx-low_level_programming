@@ -8,6 +8,10 @@
  *
  * Return: A double pointer to strings or NULL on failure.
  */
+int countWords(char *s);
+int startIndex(char *s, int index);
+int endIndex(char *s, int index);
+
 char **strtow(char *str)
 {
 int i, k, len, start, end, j = 0;
