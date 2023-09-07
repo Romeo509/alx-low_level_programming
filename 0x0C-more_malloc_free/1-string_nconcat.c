@@ -2,7 +2,7 @@
 #include "main.h"
 
 /**
-*string_ncooncat - Concatenates two strings up to n bytes.
+*string_nconcat - Concatenates two strings up to n bytes.
 *@s1: The first string.
 *@s2: The second string.
 *@n: The maximum number of bytes to concatenate
