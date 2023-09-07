@@ -10,16 +10,15 @@
 */
 int *array_range(int min, int max)
 {
+int *result;
+int index = 0;
+int current = min;
 if (min > max)
 return (NULL);
-int *arr;
-int size = max - min + 1;
-arr = (int *)malloc(size * sizeof(int));
-if (arr == NULL)
+result = malloc((max - min + 1) * sizeof(int));
+if (!result)
 return (NULL);
-for (int i = 0; i < size; i++)
-{
-arr[i] = min + i;
-}
-return (arr);
+while (index <= max - min)
+result[index++] = current++;
+return (result);
 }
