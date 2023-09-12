@@ -2,55 +2,58 @@
 #include "dog.h"
 
 /**
-*new_dog - Create a new dog with name, age, and owner.
-*@name: Pointer to a string for the dog's name.
-*@age: Age of the dog.
-*@owner: Pointer to a string for the dog's owner.
+*_strdup - Duplicates a string.
+*@str: The string to duplicate.
 *
-*Return: Pointer to the newly created dog_t struct, or NULL on failure.
+*Return: A pointer to the newly allocated string, or NULL on failure.
+*/
+char *_strdup(char *str)
+{
+unsigned int len, i;
+char *dup;
+if (str == NULL)
+return (NULL);
+len = 0;
+while (str[len])
+len++;
+len++;
+dup = malloc(len * sizeof(char));
+if (dup == NULL)
+return (NULL);
+for (i = 0; i < len; i++)
+dup[i] = str[i];
+return (dup);
+}
+
+/**
+*new_dog - Creates a new dog.
+*@name: Name of dog.
+*@age: Age of dog.
+*@owner: Owner of dog.
+*
+*Return: Pointer to new dog.
 */
 dog_t *new_dog(char *name, float age, char *owner)
 {
+dog_t *dog;
 if (name == NULL || owner == NULL)
+return (NULL);
+dog = malloc(sizeof(dog_t));
+if (dog == NULL)
+return (NULL);
+dog->name = _strdup(name);
+if (dog->name == NULL)
 {
+free(dog);
 return (NULL);
 }
-dog_t *newDog = malloc(sizeof(dog_t));
-if (newDog == NULL)
+dog->owner = _strdup(owner);
+if (dog->owner == NULL)
 {
+free(dog->name);
+free(dog);
 return (NULL);
 }
-int nameLength = 0;
-while (name[nameLength] != '\0')
-{
-nameLength++;
-}
-int ownerLength = 0;
-while (owner[ownerLength] != '\0')
-{
-ownerLength++;
-}
-newDog->name = malloc((nameLength + 1) * sizeof(char));
-if (newDog->name == NULL)
-{
-free(newDog);
-return (NULL);
-}
-newDog->owner = malloc((ownerLength + 1) * sizeof(char));
-if (newDog->owner == NULL)
-{
-free(newDog->name);
-free(newDog);
-return (NULL);
-}
-for (int i = 0; i <= nameLength; i++)
-{
-newDog->name[i] = name[i];
-}
-for (int i = 0; i <= ownerLength; i++)
-{
-newDog->owner[i] = owner[i];
-}
-newDog->age = age;
-return (newDog);
+dog->age = age;
+return (dog);
 }
