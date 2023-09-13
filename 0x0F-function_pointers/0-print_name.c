@@ -6,8 +6,10 @@
 *@name: The name to print.
 *@f: A function pointer that takes a char* and prints it.
 */
-void print_name(char *name, void (*f)(char *)) {
-if (name != NULL && f != NULL) {
+void print_name(char *name, void (*f)(char *))
+ {
+if (name != NULL && f != NULL)
+{
 f(name);
 }
 }
