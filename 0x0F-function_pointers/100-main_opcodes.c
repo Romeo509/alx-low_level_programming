@@ -10,16 +10,29 @@
 */
 int main(int argc, char *argv[])
 {
+int i = 0;
 int num_bytes = atoi(argv[1]);
+unsigned char *main_ptr;
 if (argc != 2)
 {
-printf("Error\n");
+fprintf(stderr, "Error\n");
 return (1);
 }
 if (num_bytes < 0)
 {
-printf("Error\n");
+fprintf(stderr, "Error\n");
 return (2);
+}
+asm("mov %0, main_ptr" : "=r" (main_ptr));
+while (i < num_bytes)
+{
+printf("%02x", (unsigned int)main_ptr[i]);
+if (i < num_bytes - 1)
+printf(" ");
+else
+printf("\n");
+i++;
 }
 return (0);
 }
+
