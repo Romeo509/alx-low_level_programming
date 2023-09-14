@@ -10,27 +10,30 @@
 */
 int main(int argc, char *argv[])
 {
-int i = 0;
-int num_bytes = atoi(argv[1]);
-unsigned char *main_ptr;
+int bytes, i = 0;
+char *arr;
 if (argc != 2)
 {
-fprintf(stderr, "Error\n");
-return (1);
+printf("Error\n");
+exit(1);
 }
-if (num_bytes < 0)
+bytes = atoi(argv[1]);
+if (bytes < 0)
 {
-fprintf(stderr, "Error\n");
-return (2);
+printf("Error\n");
+exit(2);
 }
-asm("mov %0, main_ptr" : "=r" (main_ptr));
-while (i < num_bytes)
+arr = (char *)main;
+while (i < bytes)
 {
-printf("%02x", (unsigned int)main_ptr[i]);
-if (i < num_bytes - 1)
-printf(" ");
+if (i == bytes - 1)
+{
+printf("%02hhx\n", arr[i]);
+}
 else
-printf("\n");
+{
+printf("%02hhx ", arr[i]);
+}
 i++;
 }
 return (0);
