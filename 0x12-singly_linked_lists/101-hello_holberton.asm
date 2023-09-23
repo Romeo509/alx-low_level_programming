@@ -1,13 +1,18 @@
 section .data
-hello db "Hello, Holberton",10
+    msg db "Hello, Holberton", 0
+    fmt db "%s", 10, 0
+
 section .text
-global _start
-_start:
-mov rax, 4
-mov rdi, 1
-lea rsi, [hello]
-mov rdx, 17
-syscall
-mov rax, 1
-xor rdi, rdi
-syscall
+    global main
+
+extern printf
+
+main:
+    mov esi, msg
+    mov edi, fmt
+    mov eax, 0
+    call printf
+
+    mov eax, 60
+    xor edi, edi
+    syscall
