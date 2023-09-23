@@ -4,12 +4,12 @@ fmt:	db "%s", 10, 0
 
 	SECTION .text
 	global main
-extern printf
+	extern printf
 main:
-mov edi, fmt
-mov esi, msg
-mov eax, 0
-call printf
+	mov esi, msg
+	mov edi, fmt
+	call printf
+	mov eax, 0
 
-ret
-mov eax, 0
+	ret
+	mov eax, 0
