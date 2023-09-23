@@ -1,7 +1,7 @@
 SECTION .data
 msg:	db "Hello, Holberton", 0
-fmt:	db "%s",0
-nl db 10,0
+fmt:	db "%s", 0, 10
+
 
 SECTION .text
 global main
