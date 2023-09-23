@@ -3,16 +3,17 @@ section .data
     fmt db "%s", 10, 0
 
 section .text
-    global main
+    global _start
 
 extern printf
 
-main:
+_start:
     mov esi, msg
     mov edi, fmt
     mov eax, 0
     call printf
 
-    mov eax, 60
+   mov eax, 60
     xor edi, edi
     syscall
+
