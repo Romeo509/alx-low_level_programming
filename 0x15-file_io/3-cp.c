@@ -2,11 +2,11 @@
 #include <stdio.h>
 
 /**
-*error_file - checks.
-*@file_from: the file file_from.
-*@file_to: the file file_to.
-*@argv: argument vector
-*Return: no return
+* error_file - checks if files can be opened.
+* @file_from: file_from.
+* @file_to: file_to.
+* @argv: arguments vector.
+* Return: no return.
 */
 void error_file(int file_from, int file_to, char *argv[])
 {
@@ -21,11 +21,12 @@ dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 exit(99);
 }
 }
+
 /**
-* main - entry point.
-* @argc: argument
-* @argv: the argument vector.
-* Return: 0.
+* main - check the code for Holberton School students.
+* @argc: number of arguments.
+* @argv: arguments vector.
+* Return: Always 0.
 */
 int main(int argc, char *argv[])
 {
