@@ -13,7 +13,6 @@ int main(int argc, char *argv[])
 int bytes;
 char *arr;
 int i;
-
 if (argc != 2)
 {
 printf("Error\n");
@@ -25,20 +24,16 @@ if (bytes < 0)
 printf("Error\n");
 exit(2);
 }
-
 arr = malloc(bytes);
-
 if (arr == NULL)
 {
 printf("Error\n");
 exit(2);
 }
-
 for (i = 0; i < bytes; i++)
 {
 arr[i] = 0;
 }
-
 for (i = 0; i < bytes; i++)
 {
 printf("%02x", arr[i]);
@@ -51,8 +46,6 @@ else
 printf(" ");
 }
 }
-
 free(arr);
 return (0);
 }
-
