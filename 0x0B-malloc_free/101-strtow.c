@@ -1,102 +1,66 @@
 #include "main.h"
+#include <stdlib.h>
 
 /**
-*strtow - splits a string into words
-*@str: string of words to be split
-*Return: double pointer to strings
+*ch_free_grid - frees an array.
+*@grid: array of char.
+*@ht: heighd .
+*
+*Return: no return
+*/
+void ch_free_grid(char **grid, unsigned int ht)
+{
+if (grid != NULL && ht != 0)
+{
+for (; ht > 0; ht--)
+free(grid[ht]);
+free(grid[ht]);
+free(grid);
+}
+}
+/**
+*strtow - splits a string.
+*@str: string.
+*
+*Return: pointer
 */
 char **strtow(char *str)
 {
-char **ptr;
-int i, k, len, start, end, j = 0;
-int words = countWords(str);
-if (!str || !countWords(str))
+char **aout;
+unsigned int c, htt, i, j, a1;
+if (str == NULL || *str == '\0')
 return (NULL);
-ptr = malloc(sizeof(char *) * (words + 1));
-if (!ptr)
-return (NULL);
-for (i = 0; i < words; i++)
+for (c = htt = 0; str[c] != '\0'; c++)
+if (str[c] != ' ' && (str[c + 1] == ' ' || str[c + 1] == '\0'))
+htt++;
+aout = malloc((htt + 1) * sizeof(char *));
+if (aout == NULL || htt == 0)
 {
-start = startIndex(str, j);
-end = endIndex(str, start);
-len = end - start;
-ptr[i] = malloc(sizeof(char) * (len + 1));
-if (!ptr[i])
-{
-i -= 1;
-while (i >= 0)
-{
-free(ptr[i]);
-i--;
-}
-free(ptr);
+free(aout);
 return (NULL);
 }
-for (k = 0; k < len; k++)
-ptr[i][k] = str[start++];
-ptr[i][k++] = '\0';
-j = end + 1;
-}
-ptr[i] = NULL;
-return (ptr);
-}
-
-/**
-*isSpace - determines if character is a space or not
-*@c: input char
-*Return: 1 if true or 0 or not
-*/
-int isSpace(char c)
+for (i = a1 = 0; i < htt; i++)
 {
-return (c == ' ');
-}
-
-/**
-*startIndex - returns first index of non-space char
-*@s: input string
-*@index: starting index
-*Return: index of first non-space char
-*/
-int startIndex(char *s, int index)
+for (c = a1; str[c] != '\0'; c++)
 {
-while (isSpace(*(s + index)))
-index++;
-return (index);
-}
-
-/**
-*endIndex - returns last index of non-space char
-*@s: input string
-*@index: starting index
-*Return: index of last index of non-space char
-*/
-int endIndex(char *s, int index)
+if (str[c] == ' ')
+a1++;
+if (str[c] != ' ' && (str[c + 1] == ' ' || str[c + 1] == '\0'))
 {
-while (!isSpace(*(s + index)))
-index++;
-return (index);
-}
-
-/**
-*countWords - counts numbers of words in string
-*@s: input string
-*Return: number of words
-*/
-int countWords(char *s)
+aout[i] = malloc((c - a1 + 2) * sizeof(char));
+if (aout[i] == NULL)
 {
-int wordOn = 0;
-int words = 0;
-while (*s)
-{
-if (isSpace(*s) && wordOn)
-wordOn = 0;
-else if (!isSpace(*s) && !wordOn)
-{
-wordOn = 1;
-words++;
+ch_free_grid(aout, i);
+return (NULL);
 }
-s++;
+break;
 }
-return (words);
+}
+for (j = 0; a1 <= c; a1++, j++)
+aout[i][j] = str[a1];
+aout[i][j] = '\0';
+}
+aout[i] = NULL;
+return (aout);
 }
 
