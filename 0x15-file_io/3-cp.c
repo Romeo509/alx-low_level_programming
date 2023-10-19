@@ -6,10 +6,10 @@ char *allocate_buffer(char *file);
 void close_descriptor(int fd);
 
 /**
- * allocate_buffer - Allocates 1024 bytes for a buffer.
- * @file: The name of the file for which the buffer is created.
+ * allocate_buffer - Allocates a buffer.
+ * @file: name of the file for the buffer created.
  *
- * Return: A pointer to the newly-allocated buffer.
+ * Return: newly-allocated buffer.
  */
 char *allocate_buffer(char *file)
 {
@@ -28,8 +28,8 @@ char *allocate_buffer(char *file)
 }
 
 /**
- * close_descriptor - Closes a file descriptor.
- * @fd: The file descriptor to be closed.
+ * close_descriptor - Closes
+ * @fd: The file to be closed.
  */
 void close_descriptor(int fd)
 {
@@ -45,16 +45,12 @@ void close_descriptor(int fd)
 }
 
 /**
- * main - Copies the contents of one file to another file.
- * @argc: The number of arguments supplied to the program.
- * @argv: An array of pointers to the arguments.
+ * main - Entry point.
+ * @argc: argument.
+ * @argv: An array
  *
- * Return: 0 on success.
+ * Return: 0 .
  *
- * Description: If the argument count is incorrect, exit with code 97.
- * If the source file does not exist or cannot be read, exit with code 98.
- * If the destination file cannot be created or written to, exit with code 99.
- * If there are issues closing file descriptors, exit with code 100.
  */
 int main(int argc, char *argv[])
 {
