@@ -1,14 +1,4 @@
 #include "main.h"
-void check_elf(unsigned char *e_ident);
-void print_class(unsigned char *e_ident);
-void great_learning(unsigned char *e_ident);
-void print_data(unsigned  char *e_ident);
-void print_version(unsigned char *e_ident);
-void print_abi(unsigned char *e_ident);
-void print_magic(unsigned char *e_ident);
-void print_type(unsigned int e_type, unsigned char *e_ident);
-void print_entry(unsigned long int e_entry, unsigned char *e_ident);
-void close_elf(int elf);
 /**
 * check_elf - check file
 * @e_ident: Pointer
@@ -168,9 +158,9 @@ void great_learning(unsigned char *e_ident)
 *@e_ident:  numbers
 *Return: void
 */
-void print_abi(unsigned char *e_ident)
+void ready_all(unsigned char *e_ident)
 {
-	printf("  ABI Version:                       %d\n", e_ident[EI_ABIVERSION]);
+	printf("  Any Version:                       %d\n", e_ident[EI_ABIVERSION]);
 }
 /**
  * print_type - print the type of Elf header
@@ -280,7 +270,7 @@ int main(int argc __attribute__((__unused__)), char *argv[])
 	print_data(header->e_ident);
 	print_version(header->e_ident);
 	great_learning(header->e_ident);
-	print_abi(header->e_ident);
+	ready_all(header->e_ident);
 	print_type(header->e_type, header->e_ident);
 	print_entry(header->e_entry, header->e_ident);
 	free(header);
