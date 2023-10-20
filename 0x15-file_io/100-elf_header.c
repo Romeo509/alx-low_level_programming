@@ -1,27 +1,27 @@
 #include "main.h"
 void check_elf(unsigned char *e_ident);
-void print_magic(unsigned char *e_ident);
 void print_class(unsigned char *e_ident);
+void great_learning(unsigned char *e_ident);
 void print_data(unsigned  char *e_ident);
 void print_version(unsigned char *e_ident);
 void print_abi(unsigned char *e_ident);
-void print_osabi(unsigned char *e_ident);
+void print_magic(unsigned char *e_ident);
 void print_type(unsigned int e_type, unsigned char *e_ident);
 void print_entry(unsigned long int e_entry, unsigned char *e_ident);
 void close_elf(int elf);
 /**
- * check_elf - check if file is elf
- * @e_ident: pointer to arr containes elf magic numbers
- * Return: void
- */
+* check_elf - check file
+* @e_ident: Pointer
+* Return: Always void
+*/
 void check_elf(unsigned char *e_ident)
 {
-	int i;
+	int a;
 
-	for (i = 0; i < 4; i++)
+	for (a = 0; a < 4; a++)
 	{
-		if (e_ident[i] != 127 && e_ident[i] != 'E' &&
-				e_ident[i] != 'L' && e_ident[i] != 'F')
+		if (e_ident[a] != 127 && e_ident[a] != 'E' &&
+				e_ident[a] != 'L' && e_ident[a] != 'F')
 		{
 			dprintf(STDERR_FILENO, "Error: Not an ELF file\n");
 			exit(98);
@@ -29,31 +29,32 @@ void check_elf(unsigned char *e_ident)
 	}
 }
 /**
- * print_magic - print the magic number of Elf header
- * @e_ident: pointer to arr containes elf magic numbers
- * Return: void
- */
+* print_magic - This is where the magic happens
+* @e_ident: The pointer
+* Return: void
+*/
 void print_magic(unsigned char *e_ident)
 {
-	int i;
+	int b;
 
 	printf("  Magic:   ");
 
-	for (i = 0; i < EI_NIDENT; i++)
+	for (b = 0; b < EI_NIDENT; b++)
 	{
-		printf("%02x", e_ident[i]);
+		printf("%02x", e_ident[b]);
 
-		if (i == EI_NIDENT - 1)
+		if (b == EI_NIDENT - 1)
 			printf("\n");
 		else
 			printf(" ");
 	}
 }
 /**
- * print_class - print the class of Elf header
- * @e_ident: pointer to arr containes elf magic numbers
- * Return: void
- */
+*print_class - The print class
+*@e_ident: The pointer
+*
+*Return: void
+*/
 void print_class(unsigned char *e_ident)
 {
 	printf("  Class:                             ");
@@ -74,10 +75,11 @@ void print_class(unsigned char *e_ident)
 	}
 }
 /**
- * print_data - print the data of Elf header
- * @e_ident: pointer to arr containes elf magic numbers
- * Return: void
- */
+* print_data - To print
+* @e_ident: The pointer.
+*
+* Return: Always void
+*/
 void print_data(unsigned  char *e_ident)
 {
 	printf("  Data:                              ");
@@ -98,10 +100,10 @@ void print_data(unsigned  char *e_ident)
 	}
 }
 /**
- * print_version - print the version of Elf header
- * @e_ident: pointer to arr containes elf magic numbers
- * Return: void
- */
+*print_version - The version.
+*@e_ident: pointer.
+*Return: void
+*/
 void print_version(unsigned char *e_ident)
 {
 	printf("  Version:                           %d", e_ident[EI_VERSION]);
@@ -117,11 +119,11 @@ void print_version(unsigned char *e_ident)
 	}
 }
 /**
- * print_osabi - print the OS ABI of Elf header
+ * great_learning - great
  * @e_ident: pointer to arr containes elf magic numbers
  * Return: void
  */
-void print_osabi(unsigned char *e_ident)
+void great_learning(unsigned char *e_ident)
 {
 	printf("  OS/ABI:                            ");
 
@@ -162,10 +164,10 @@ void print_osabi(unsigned char *e_ident)
 	}
 }
 /**
- * print_abi - print the ABI Version of Elf header
- * @e_ident: pointer to arr containes elf magic numbers
- * Return: void
- */
+*print_abi - header
+*@e_ident:  numbers
+*Return: void
+*/
 void print_abi(unsigned char *e_ident)
 {
 	printf("  ABI Version:                       %d\n", e_ident[EI_ABIVERSION]);
@@ -205,11 +207,12 @@ void print_type(unsigned int e_type, unsigned char *e_ident)
 	}
 }
 /**
- * print_entry - print the entry of Elf header
- * @e_entry: adresse of elf entry point
- * @e_ident: pointer to arr containes elf class
- * Return: void
- */
+*print_entry - entry
+*@e_entry: elf entry point
+*@e_ident: elf class
+*
+*Return: void
+*/
 void print_entry(unsigned long int e_entry, unsigned char *e_ident)
 {
 	printf("  Entry point address:               ");
@@ -226,10 +229,10 @@ void print_entry(unsigned long int e_entry, unsigned char *e_ident)
 		printf("%#lx\n", e_entry);
 }
 /**
- * close_elf - closes an ELF file
- * @elf: ELF file Descriptor
- * Return: void
- */
+*close_elf - file
+*@elf: sd
+*Return: 0
+*/
 void close_elf(int elf)
 {
 	if (close(elf) == -1)
@@ -239,11 +242,11 @@ void close_elf(int elf)
 	}
 }
 /**
- * main - Entry point
- * @argc: len of argv
- * @argv: array of argument
- * Return: Always 0 (Success)
- */
+*main - Entry point.
+*@argc: argv
+*@argv: argument
+*Return: 0
+*/
 int main(int argc __attribute__((__unused__)), char *argv[])
 {
 	Elf64_Ehdr *header;
@@ -276,7 +279,7 @@ int main(int argc __attribute__((__unused__)), char *argv[])
 	print_class(header->e_ident);
 	print_data(header->e_ident);
 	print_version(header->e_ident);
-	print_osabi(header->e_ident);
+	great_learning(header->e_ident);
 	print_abi(header->e_ident);
 	print_type(header->e_type, header->e_ident);
 	print_entry(header->e_entry, header->e_ident);
