@@ -19,4 +19,3 @@ node_count++;
 
 return (node_count);
 }
-
