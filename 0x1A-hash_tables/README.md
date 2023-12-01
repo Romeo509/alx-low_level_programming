@@ -1,59 +1,3 @@
-# C - Hash Tables
-
-In this C project, I implemented hash functions and hash tables.
-
-## Table of Contents
-
-- [Introduction](#introduction)
-- [Files](#files)
-- [Data Structures](#data-structures)
-- [Function Prototypes](#function-prototypes)
-- [Tasks](#tasks)
-
-## Introduction
-
-This project explores hash functions and hash tables in C. The implementation includes both basic hash tables and sorted hash tables.
-
-## Files
-
-- [`hash_tables.h`](./hash_tables.h): Header file containing definitions and prototypes for all types and functions.
-
-## Data Structures
-
-### Basic Hash Table
-
-```c
-typedef struct hash_node_s
-{
-    char *key;
-    char *value;
-    struct hash_node_s *next;
-} hash_node_t;
-
-typedef struct hash_table_s
-{
-    unsigned long int size;
-    hash_node_t **array;
-} hash_table_t;
-
-
-## Sorted Hash Table
-typedef struct shash_node_s
-{
-    char *key;
-    char *value;
-    struct shash_node_s *next;
-    struct shash_node_s *sprev;
-    struct shash_node_s *snext;
-} shash_node_t;
-
-typedef struct shash_table_s
-{
-    unsigned long int size;
-    shash_node_t **array;
-    shash_node_t *shead;
-    shash_node_t *stail;
-} shash_table_t;
 
 <!DOCTYPE html>
 <html lang="en">
@@ -163,3 +107,61 @@ typedef struct shash_table_s
 
 </body>
 </html>
+
+
+# C - Hash Tables
+
+In this C project, I implemented hash functions and hash tables.
+
+## Table of Contents
+
+- [Introduction](#introduction)
+- [Files](#files)
+- [Data Structures](#data-structures)
+- [Function Prototypes](#function-prototypes)
+- [Tasks](#tasks)
+
+## Introduction
+
+This project explores hash functions and hash tables in C. The implementation includes both basic hash tables and sorted hash tables.
+
+## Files
+
+- [`hash_tables.h`](./hash_tables.h): Header file containing definitions and prototypes for all types and functions.
+
+## Data Structures
+
+### Basic Hash Table
+
+```c
+typedef struct hash_node_s
+{
+    char *key;
+    char *value;
+    struct hash_node_s *next;
+} hash_node_t;
+
+typedef struct hash_table_s
+{
+    unsigned long int size;
+    hash_node_t **array;
+} hash_table_t;
+
+
+## Sorted Hash Table
+typedef struct shash_node_s
+{
+    char *key;
+    char *value;
+    struct shash_node_s *next;
+    struct shash_node_s *sprev;
+    struct shash_node_s *snext;
+} shash_node_t;
+
+typedef struct shash_table_s
+{
+    unsigned long int size;
+    shash_node_t **array;
+    shash_node_t *shead;
+    shash_node_t *stail;
+} shash_table_t;
