@@ -1,0 +1,49 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include "search_algos.h"
+
+/**
+ * exponential_search - Searches for a value in a sorted array
+ * using Exponential search.
+ * @array: Pointer to the first element of the array to search in.
+ * @size: Number of elements in the array.
+ * @value: Value to search for.
+ *
+ * Return: The first index where the value is located, or -1 if not found.
+ */
+int exponential_search(int *array, size_t size, int value)
+{
+size_t bound, left, right, i;
+
+if (array == NULL || size == 0)
+return (-1);
+
+bound = 1;
+while (bound < size && array[bound] < value)
+{
+printf("Value checked array[%ld] = [%d]\n", bound, array[bound]);
+bound *= 2;
+}
+
+left = bound / 2;
+right = (bound < size - 1) ? bound : size - 1;
+printf("Value found between indexes [%ld] and [%ld]\n", left, right);
+
+printf("Searching in array: ");
+for (i = left; i <= right; i++)
+printf("%d%c", array[i], (i < right) ? ',' : '\n');
+
+while (left <= right)
+{
+size_t mid = (left + right) / 2;
+
+if (array[mid] == value)
+return (mid);
+else if (array[mid] > value)
+right = mid - 1;
+else
+left = mid + 1;
+}
+
+return (-1);
+}
