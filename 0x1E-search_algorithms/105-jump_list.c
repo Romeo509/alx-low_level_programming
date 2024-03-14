@@ -2,59 +2,51 @@
 #include <math.h>
 
 /**
- * jump_list - Searches for a value in a sorted list of integers.
- * @list: Pointer to the head of the sorted list to search in.
- * @size: The number of nodes in the list.
- * @value: The value to search for.
+ * jump_list - Searches for a value in a sorted linked list
+ *             using the Jump search algorithm.
  *
- * Return: A pointer to the first node where value is located
+ * @list: Pointer to the head of the linked list to search.
+ * @size: Number of nodes in the linked list.
+ * @value: Value to search for.
+ *
+ * Return: A pointer to the first node where the value is located,
+ *         or NULL if the value is not present or the list is NULL.
  */
 listint_t *jump_list(listint_t *list, size_t size, int value)
 {
+size_t jump_index, jump_step, jump_size;
+listint_t *prev;
+
 if (list == NULL || size == 0)
 return (NULL);
 
-size_t jump = (size_t)sqrt((double)size);
-size_t index = 0, k = 0;
+jump_size = (size_t)sqrt((double)size);
+jump_index = 0;
+jump_step = 0;
 
 do {
-k++;
-index = k *jump;
-while (list->next && list->index < index)
+prev = list;
+jump_step++;
+jump_index = jump_step *jump_size;
+
+while (list->next && list->index < jump_index)
 list = list->next;
 
-if (list->next == NULL && index != list->index)
-index = list->index;
+if (list->next == NULL && jump_index != list->index)
+jump_index = list->index;
 
-printf("Value checked at index [%d] = [%d]\n", (int)index, list->n);
+printf("Value checked at index [%d] = [%d]\n", (int)jump_index, list->n);
 
-} while (index < size && list->next && list->n < value);
+} while (jump_index < size && list->next && list->n < value);
 
-printf("Value found between indexes [%d] and [%d]\n",
-(int)index - jump, (int)index);
+printf("Value found between indexes ");
+printf("[%d] and [%d]\n", (int)prev->index, (int)list->index);
 
-return (list);
-}
-
-/**
- * linear_search - Searches for a value in a range of nodes.
- * @start: Pointer to the starting node of the range.
- * @end: Pointer to the ending node.
- * @value: The value to search for.
- *
- * Return: A pointer to the node where value is located,
- */
-listint_t *linear_search(listint_t *start, listint_t *end, int value)
+for (; prev && prev->index <= list->index; prev = prev->next)
 {
-listint_t *current;
-
-for (current = start;
-current != end->next && current != NULL;
-current = current->next)
-{
-printf("Value checked at index [%d] = [%d]\n", current->index, current->n);
-if (current->n == value)
-return (current);
+printf("Value checked at index [%d] = [%d]\n", (int)prev->index, prev->n);
+if (prev->n == value)
+return (prev);
 }
 
 return (NULL);
